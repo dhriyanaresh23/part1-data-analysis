@@ -8,7 +8,7 @@ The objective is to prepare a high-quality dataset for machine learning by ident
 The notebook follows a structured workflow that includes data loading, cleaning, exploratory analysis, visualization, statistical comparison, and dataset export.
 
 ---
-# Objectives
+## Objectives
 
 The main objectives of this project are:
 
@@ -26,7 +26,7 @@ The main objectives of this project are:
 - Export a cleaned dataset for future machine learning tasks.
 
 ---
-# Dataset Information
+## Dataset Information
 
 **Dataset Name:** House Prices Dataset
 
@@ -53,7 +53,7 @@ The target variable used in later parts is:
 
 ---
 
-# Repository Structure
+## Repository Structure
 
 ```
 part1-data-analysis/
@@ -71,7 +71,7 @@ part1-data-analysis/
     └── correlation_heatmap.png
 ```
 
-# Technologies Used
+## Technologies Used
 
 - Python
 - Pandas
@@ -82,7 +82,7 @@ part1-data-analysis/
 - Jupyter Notebook
 
 ---
-# Dependencies
+## Dependencies
 
 Install the required libraries before running the notebook.
 
@@ -91,9 +91,9 @@ pip install pandas numpy matplotlib seaborn scipy scikit-learn
 ```
 
 ---
-# How to Run
+## How to Run
 
-## Step 1
+### Step 1
 
 Clone the repository.
 
@@ -101,7 +101,7 @@ Clone the repository.
 git clone https://github.com/dhriyanaresh23/part1-data-analysis.git
 ```
 
-## Step 2
+### Step 2
 
 Open the project folder.
 
@@ -117,7 +117,7 @@ Install the required libraries.
 pip install pandas numpy matplotlib seaborn scipy scikit-learn
 ```
 
-## Step 4
+### Step 4
 
 Launch Jupyter Notebook.
 
@@ -125,7 +125,7 @@ Launch Jupyter Notebook.
 jupyter notebook
 ```
 
-## Step 5
+### Step 5
 
 Open:
 
@@ -133,7 +133,7 @@ Open:
 part1_analysis.ipynb
 ```
 
-## Step 6
+### Step 6
 
 Run all notebook cells from top to bottom.
 
@@ -145,7 +145,7 @@ The notebook automatically generates:
 
 ---
 
-# Environment Variables
+## Environment Variables
 
 This project **does not require any API keys or environment variables**.
 
@@ -153,13 +153,13 @@ No passwords, API keys, tokens, or secrets are stored anywhere in this repositor
 
 ---
 
-# Task 1 – Load the Dataset
+## Task 1 – Load the Dataset
 
-## Objective
+### Objective
 
 Load the House Prices dataset into a Pandas DataFrame and inspect its structure.
 
-## Implementation
+### Implementation
 
 The dataset was loaded using:
 
@@ -174,7 +174,7 @@ The following information was displayed:
 - Column names
 - Data types
 
-## Result
+### Result
 
 Dataset Shape:
 
@@ -187,13 +187,13 @@ The initial inspection confirmed that several columns contained missing values a
 
 ---
 
-# Task 2 – Null Value Analysis
+## Task 2 – Null Value Analysis
 
-## Objective
+### Objective
 
 Identify missing values and perform appropriate imputation.
 
-## Implementation
+### Implementation
 
 Missing values were identified using:
 
@@ -218,7 +218,7 @@ For numeric columns with **less than 20% missing values**, missing values were f
 df[col].fillna(df[col].median(), inplace=True)
 ```
 
-## Why Median Instead of Mean?
+### Why Median Instead of Mean?
 
 Median imputation was selected because many housing-related variables are positively skewed and contain extreme values.
 
@@ -227,20 +227,20 @@ Unlike the mean, the median is resistant to outliers and therefore preserves the
 This approach reduces bias introduced by unusually large or expensive properties.
 
 ---
-## Results
+### Results
 
 - Missing-value counts and percentages were calculated for every column.
 - Columns exceeding a **20% null rate** were identified and reported.
 - Numeric columns with less than **20% missing values** were successfully imputed using the median.
 - After imputation, the dataset contained significantly fewer missing values and was ready for further preprocessing.
 
-# Task 3 – Duplicate Detection and Removal
+## Task 3 – Duplicate Detection and Removal
 
-## Objective
+### Objective
 
 Identify duplicate observations and remove them if necessary.
 
-## Implementation
+### Implementation
 
 Duplicate rows were detected using:
 
@@ -254,7 +254,7 @@ Duplicate records were removed using:
 df.drop_duplicates()
 ```
 
-## Result
+### Result
 
 Duplicate Rows Found:
 
@@ -268,13 +268,13 @@ Since no duplicate observations were present, the dataset size remained unchange
 
 This confirmed that every observation represented a unique property record.
 
-# Task 4: Data Type Correction
+## Task 4: Data Type Correction
 
-## Objective
+### Objective
 
 The objective of this task was to identify columns with incorrect data types, convert them to appropriate data types, and reduce memory usage by converting repetitive string columns to the `category` data type.
 
-## Methodology
+### Methodology
 
 The data types of all columns were inspected using:
 
@@ -304,26 +304,26 @@ Memory usage before and after the conversion was calculated using:
 df.memory_usage(deep=True).sum()
 ```
 
-## Results
+### Results
 
 - Incorrect data types were successfully corrected.
 - At least one categorical column was converted to the `category` data type.
 - Memory usage before and after conversion was measured.
 - The dataset became more memory efficient while preserving the original information.
 
-## Design Decision
+### Design Decision
 
 Using appropriate data types improves computational efficiency, reduces memory consumption, and prepares the dataset for efficient machine learning preprocessing.
 
 ---
 
-# Task 5: Descriptive Statistics and Skewness
+## Task 5: Descriptive Statistics and Skewness
 
-## Objective
+### Objective
 
 The objective of this task was to generate descriptive statistics for all numerical features, measure skewness, identify the most skewed feature, and explain how skewness influences the choice of imputation strategy.
 
-## Methodology
+### Methodology
 
 Descriptive statistics were generated using:
 
@@ -343,8 +343,8 @@ After comparing the skewness values of all numerical columns, **MiscVal** was id
 
 - **Highest Absolute Skewness Column:** MiscVal
 - **Skewness Value:** 24.476794
-- 
-## Results
+
+### Results
 
 The descriptive statistics included:
 
@@ -373,13 +373,13 @@ For highly skewed features such as **MiscVal**, the **mean** is affected by extr
 
 The **median** is resistant to outliers and skewed distributions because it is based on the middle value rather than the average. Therefore, the median is a more appropriate choice for imputing missing values in skewed numerical features.
 
-# Task 6: Outlier Detection with IQR
+## Task 6: Outlier Detection with IQR
 
-## Objective
+### Objective
 
 The objective of this task was to identify potential outliers in the dataset using the Interquartile Range (IQR) method without removing any observations. The identified outliers will be considered during model development in Part 2.
 
-## Methodology
+### Methodology
 
 Outlier analysis was performed on the following numerical columns:
 
@@ -408,7 +408,7 @@ Upper Bound = Q3 + 1.5 × IQR
 
 Any observation lying outside these bounds was considered an outlier.
 
-## Results
+### Results
 
 ### SalePrice
 
@@ -438,7 +438,7 @@ The number of observations outside the IQR boundaries was calculated and reporte
 
 No outliers were removed during this stage because the assignment specifically required only their identification and documentation.
 
-## Interpretation
+### Interpretation
 
 The IQR analysis identified **61 outliers** in the **SalePrice** feature and **31 outliers** in the **GrLivArea** feature.
 
@@ -448,7 +448,7 @@ Therefore, the identified outliers were **retained** in the cleaned dataset. If 
 
 # Task 7: Data Visualizations
 
-## Objective
+### Objective
 
 The objective of this task was to explore the cleaned dataset visually, understand the distribution of important variables, identify possible outliers, examine relationships between features, and detect correlations that may be useful during model development.
 
@@ -458,7 +458,7 @@ Five different visualizations were created to better understand the cleaned hous
 
 ---
 
-## 1. Line Plot
+### 1. Line Plot
 
 **Plot Title:** SalePrice Across Dataset
 
@@ -470,7 +470,7 @@ The line plot shows that house prices fluctuate throughout the dataset. Most pro
 
 ---
 
-## 2. Bar Chart
+### 2. Bar Chart
 
 **Plot Title:** Mean SalePrice by Neighborhood
 
@@ -481,9 +481,9 @@ The average sale price for each neighborhood was computed using group-by aggrega
 
 ### Interpretation
 
-The bar chart shows noticeable differences in average sale prices across neighborhoods. Neighborhoods such as NoRidge have considerably  higher average sale prices than others, indicating that location has a strong influence on property values. This suggests that the Neighborhood feature is likely to be an important predictor of house prices in the dataset
+The bar chart shows noticeable differences in average sale prices across neighborhoods. Neighborhoods such as NoRidge have considerably higher average sale prices than others, indicating that location has a strong influence on property values. This suggests that the Neighborhood feature is likely to be an important predictor of house prices in the dataset.
 
-## 3. Histogram
+### 3. Histogram
 
 **Plot Title:** Distribution of MiscVal
 
@@ -498,7 +498,7 @@ The histogram has a **highly right-skewed (positively skewed)** distribution. Mo
 The histogram confirms that **MiscVal** is the most skewed numerical feature. Because of its heavy positive skew and extreme values, the **median** is a better choice than the mean for imputing missing values.
 
 
-## 4. Scatter Plot
+### 4. Scatter Plot
 
 **Plot Title:** GrLivArea vs SalePrice
 
@@ -509,7 +509,7 @@ A scatter plot was created using `sns.scatterplot()` to visualize the relationsh
 The scatter plot shows a **positive and moderately strong linear relationship** between **GrLivArea** and **SalePrice**. As the above-ground living area increases, the sale price generally increases as well. Although a few outliers are present, the overall upward trend indicates that larger houses tend to have higher selling prices.
 
 
-## 5. Box Plot
+### 5. Box Plot
 
 **Plot Title:** SalePrice Distribution by HouseStyle
 
@@ -520,24 +520,24 @@ A box plot was created to compare the distribution of **SalePrice** across diffe
 The box plot shows clear differences in the **median sale price** and the **spread of prices** across different house styles. Some categories have higher median sale prices, while others exhibit greater variability and more outliers. This suggests that house style influences the selling price and contributes useful information for predictive modelling.
 
 
-## Summary
+### Summary
 
 The visualizations provided several important insights:
 
 - SalePrice varies considerably across the dataset.
-- Neighborhood has a significant impact on average selling price.
+- Neighborhood has a significant impact on average sale price.
 - MiscVal has a highly right-skewed distribution with many zero values and a few extreme observations.
 - GrLivArea and SalePrice have a positive, moderately strong relationship.
 - HouseStyle influences both the median and variability of sale prices.
 - Outliers are present in multiple visualizations, but they appear to represent genuine property characteristics rather than data-entry errors.
 
-# Task 8: Correlation Heat Map
+## Task 8: Correlation Heat Map
 
-## Objective
+### Objective
 
 The objective of this task was to identify relationships between numerical variables by computing a correlation matrix and visualising it using a heat map. This helps identify strongly related features that may be useful during feature selection.
 
-## Methodology
+### Methodology
 
 A correlation matrix was computed using:
 
@@ -547,7 +547,7 @@ df.corr()
 
 The resulting matrix was visualised using a heat map with annotations to display the correlation values between numerical features.
 
-## Highest Correlation Pair
+### Highest Correlation Pair
 
 The pair with the highest absolute correlation was:
 
@@ -555,7 +555,7 @@ The pair with the highest absolute correlation was:
 |------------|------------|------------:|
 | GarageCars | GarageArea | **0.882475** |
 
-## Interpretation
+### Interpretation
 
 The strong positive correlation between **GarageCars** and **GarageArea** indicates that houses with larger garage areas generally accommodate more vehicles. This relationship is expected because both variables describe the size and capacity of the garage.
 
@@ -565,27 +565,27 @@ A plausible alternative explanation is that **larger houses tend to have both la
 
 The correlation heat map helps identify highly related features and provides useful guidance for feature selection in later modelling stages.
 
-# Task 9(a): Imputation Strategy Comparison
+## Task 9(a): Imputation Strategy Comparison
 
-## Objective
+### Objective
 
 The objective of this task was to compare the **mean** and **median** for the two numerical columns with the highest absolute skewness before applying missing value imputation. This comparison helps determine the most appropriate measure of central tendency for skewed data.
 
-## Columns Analysed
+### Columns Analysed
 
 The two numerical columns with the highest absolute skewness identified in **Task 5** were:
 
 - MiscVal
 - PoolArea
 
-## Mean and Median Comparison
+### Mean and Median Comparison
 
 | Column | Skewness | Mean | Median |
 |---------|---------:|-----:|-------:|
 | MiscVal | 24.476794 | 43.489041 | 0.0 |
 | PoolArea | 14.828374 | 2.758904 | 0.0 |
 
-## Imputation Strategy
+### Imputation Strategy
 
 Both **MiscVal** and **PoolArea** are **positively skewed**.
 
@@ -595,7 +595,7 @@ For a **negatively skewed** distribution, a small number of extremely low values
 
 Since both selected columns are highly **positively skewed**, the **median** was chosen for imputing missing values using `fillna()`.
 
-## Missing Value Confirmation
+### Missing Value Confirmation
 
 After applying median imputation, the remaining missing values were checked using `isnull().sum()`.
 
@@ -606,13 +606,13 @@ After applying median imputation, the remaining missing values were checked usin
 
 The results confirm that **no missing values remain** in either column after imputation.
 
-# Task 9(b): Spearman Rank Correlation
+## Task 9(b): Spearman Rank Correlation
 
-## Objective
+### Objective
 
 The objective of this task was to compare Pearson and Spearman correlation coefficients to determine whether relationships between numerical variables are approximately linear or monotonic but non-linear. This comparison helps identify the most suitable correlation measure for feature selection in the modelling stage.
 
-## Three Variable Pairs with the Largest Difference
+### Three Variable Pairs with the Largest Difference
 
 | Variable Pair | Pearson | Spearman | |Spearman − Pearson| |
 |---------------|---------:|----------:|---------------------:|
@@ -620,7 +620,7 @@ The objective of this task was to compare Pearson and Spearman correlation coeff
 | LotArea – BedroomAbvGr | 0.119690 | 0.337788 | 0.218098 |
 | LotArea – TotRmsAbvGrd | 0.190015 | 0.405924 | 0.215909 |
 
-## Interpretation
+### Interpretation
 
 ### 1. LotFrontage and LotArea
 
@@ -634,13 +634,13 @@ Since **|Spearman| (0.337788) > |Pearson| (0.119690)**, this relationship is als
 
 Since **|Spearman| (0.405924) > |Pearson| (0.190015)**, this relationship is **monotonic but non-linear**. Properties with larger lot areas generally have more rooms above ground, but the relationship is not strictly linear.
 
-## Correlation Measure for Feature Selection
+### Correlation Measure for Feature Selection
 
 For feature selection in **Part 2**, **Spearman correlation** will be preferred because it captures monotonic relationships that may not be strictly linear. Since all three variable pairs have **|Spearman| greater than |Pearson|**, Spearman provides a stronger and more representative measure of association for these features. Using Spearman correlation can help identify useful predictors even when relationships are non-linear.
 
-# Task 9(c): Grouped Aggregation
+## Task 9(c): Grouped Aggregation
 
-## Objective
+### Objective
 
 The objective of this task was to analyse how the categorical feature **Neighborhood** influences the numerical target variable **SalePrice** by computing grouped summary statistics.
 
@@ -652,7 +652,7 @@ df.groupby("Neighborhood")["SalePrice"].agg(["mean", "std", "count"])
 
 The mean, standard deviation, and count were calculated for each neighbourhood.
 
-## Results
+### Results
 
 ### Group with the Highest Mean
 
@@ -670,7 +670,7 @@ The mean, standard deviation, and count were calculated for each neighbourhood.
 |--------------|------------:|------:|
 | 335295.32 | 98576.47 | **3.40** |
 
-## Interpretation
+### Interpretation
 
 The **NoRidge** neighbourhood has both the highest average sale price and the highest variation in sale prices.
 
@@ -680,7 +680,7 @@ The ratio of the highest neighbourhood mean to the lowest neighbourhood mean is 
 
 This large ratio suggests that **Neighborhood carries useful predictive signal** and should be retained as an important feature for modelling in Part 2.
 
-# Task 10: Saving the Cleaned Dataset
+## Task 10: Saving the Cleaned Dataset
 
 After completing data cleaning, preprocessing, and exploratory data analysis, the final cleaned dataset was saved as:
 
@@ -704,7 +704,7 @@ The file contains the cleaned records after:
 - Performing exploratory data analysis
 - Preparing the dataset for predictive modelling
 
-# Conclusion
+## Conclusion
 
 This project successfully completed data acquisition, preprocessing, cleaning, exploratory data analysis, visualization, correlation analysis, skewness analysis, outlier detection, and grouped statistical analysis for the House Prices dataset.
 
