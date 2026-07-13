@@ -28,7 +28,9 @@ The main objectives of this project are:
 ---
 ## Dataset Information
 
-**Dataset Name:** House Prices Dataset
+- **Dataset:** `train.csv`
+- **Source:** House Prices – Advanced Regression Techniques
+- **Description:** This dataset was used for data preprocessing, cleaning, feature engineering, and exploratory data analysis in Part 1.
 
 Dataset Dimensions:
 
@@ -61,6 +63,7 @@ part1-data-analysis/
 ├── part1_analysis.ipynb
 ├── cleaned_data.csv
 ├── README.md
+├── train.csv
 │
 └── outputs/
     ├── line_plot.png
