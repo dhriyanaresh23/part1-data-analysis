@@ -109,7 +109,7 @@ Open the project folder.
 cd part1-data-analysis
 ```
 
-## Step 3
+### Step 3
 
 Install the required libraries.
 
