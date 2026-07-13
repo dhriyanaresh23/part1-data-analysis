@@ -711,4 +711,4 @@ The file contains the cleaned records after:
 
 This project successfully completed data acquisition, preprocessing, cleaning, exploratory data analysis, visualization, correlation analysis, skewness analysis, outlier detection, and grouped statistical analysis for the House Prices dataset.
 
-The cleaned dataset (`cleaned_data.csv`) was generated and prepared for subsequent machine learning tasks in Parts 2 and 3. The analysis identified important predictors such as Neighborhood, GrLivArea, GarageArea, and OverallQual while preserving genuine outliers for future modelling.
+The cleaned dataset (`cleaned_data.csv`) was generated and prepared for subsequent machine learning tasks in Parts 2,3, and 4. The analysis identified important predictors such as Neighborhood, GrLivArea, GarageArea, and OverallQual while preserving genuine outliers for future modelling.
