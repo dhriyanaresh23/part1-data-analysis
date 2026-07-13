@@ -481,8 +481,7 @@ The average sale price for each neighborhood was computed using group-by aggrega
 
 ### Interpretation
 
-The bar chart shows noticeable differences in average sale prices across neighborhoods. Neighborhoods such as NoRidge have considerably higher average sale prices than others, indicating that location has a strong influence on property values. This suggests that the Neighborhood feature is likely to be an important predictor of house prices in the dataset.
----
+The bar chart shows noticeable differences in average sale prices across neighborhoods. Neighborhoods such as NoRidge have considerably  higher average sale prices than others, indicating that location has a strong influence on property values. This suggests that the Neighborhood feature is likely to be an important predictor of house prices in the dataset
 
 ## 3. Histogram
 
@@ -497,7 +496,7 @@ The histogram has a **highly right-skewed (positively skewed)** distribution. Mo
 ### Interpretation
 
 The histogram confirms that **MiscVal** is the most skewed numerical feature. Because of its heavy positive skew and extreme values, the **median** is a better choice than the mean for imputing missing values.
----
+
 
 ## 4. Scatter Plot
 
@@ -509,7 +508,6 @@ A scatter plot was created using `sns.scatterplot()` to visualize the relationsh
 
 The scatter plot shows a **positive and moderately strong linear relationship** between **GrLivArea** and **SalePrice**. As the above-ground living area increases, the sale price generally increases as well. Although a few outliers are present, the overall upward trend indicates that larger houses tend to have higher selling prices.
 
----
 
 ## 5. Box Plot
 
@@ -521,7 +519,6 @@ A box plot was created to compare the distribution of **SalePrice** across diffe
 
 The box plot shows clear differences in the **median sale price** and the **spread of prices** across different house styles. Some categories have higher median sale prices, while others exhibit greater variability and more outliers. This suggests that house style influences the selling price and contributes useful information for predictive modelling.
 
----
 
 ## Summary
 
